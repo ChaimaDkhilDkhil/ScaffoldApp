@@ -1,6 +1,59 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ScaffoldSample(),
+    ),
+  );
+}
+
+class AffirmationCard extends StatelessWidget {
+  const AffirmationCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            "assets/image1.jpg",
+            height: 100,
+            width: 100,
+            fit: BoxFit.cover,
+          ),
+          const Text(
+            "Affirmation Title",
+            style: TextStyle(
+              fontSize: 30,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AffirmationList extends StatelessWidget {
+  const AffirmationList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: const [
+        AffirmationCard(),
+        AffirmationCard(),
+        AffirmationCard(),
+      ],
+    );
+  }
+}
+
 class ScaffoldSample extends StatelessWidget {
   const ScaffoldSample({super.key});
 
@@ -8,7 +61,7 @@ class ScaffoldSample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Flutter Dev")),
-      body: const Center(child: Text("Welcome to Flutter Dev")),
+      body: const AffirmationList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (kDebugMode) {
@@ -66,13 +119,4 @@ class ScaffoldSample extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ScaffoldSample(),
-    ),
-  );
 }
